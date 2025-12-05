@@ -1,116 +1,117 @@
-# financial-sentiment-analysis
-📰 Financial Sentiment Analysis in News Headlines
+# Financial Sentiment Analysis in News Headlines
 
-Team Members:
-	•	K2453494 – Adharsh Vaiapuri
-	•	K2501085 – Avez Mushtaq Kazi
+## Team Members
+- **K2453494** – Adharsh Vaiapuri
+- **K2501085** – Avez Mushtaq Kazi
 
-⸻
+---
 
-🎯 Project Overview
+## Project Overview
 
-Financial markets are highly sensitive to news. Even subtle wording in financial headlines can influence investor sentiment and, in turn, market behavior.
+Financial markets react strongly to news headlines, which can quickly influence investor attitudes and market dynamics. Accurate analysis of sentiment in these headlines is critical for understanding and predicting trends in the financial sector.
 
-This project applies Natural Language Processing (NLP) techniques and transformer-based deep learning models to automatically classify financial news headlines into positive, neutral, or negative sentiments.
+This project uses advanced Natural Language Processing (NLP) and deep learning techniques to classify financial news headlines according to their expressed sentiment—positive, neutral, or negative.
 
-The goal is to build an efficient and accurate sentiment classification model that can assist in tasks like market trend analysis, risk assessment, and automated trading insights.
+**Objectives:**
+- Develop a reliable, automated sentiment classification model.
+- Support use cases such as market trend detection, risk analysis, and algorithmic trading.
+- Compare transformer models to determine which is best suited for financial domain text.
 
-⸻
+---
 
-🧠 Problem Statement
+## Problem Statement
 
-Traditional sentiment models struggle with financial jargon and subtle tone variations.
-This project aims to fine-tune and compare two state-of-the-art transformer models:
-	•	BERT (Bidirectional Encoder Representations from Transformers)
-	•	DistilBERT (a smaller, faster distilled version of BERT)
+Most generic sentiment analysis tools are not optimized for financial language, which often contains technical jargon and subtle tonal differences. To address this, two leading transformer models are fine-tuned and evaluated on financial data:
 
-Both models are trained using the Hugging Face transformers library and evaluated on labelled financial news data.
+- **BERT (Bidirectional Encoder Representations from Transformers):** Known for its deep contextual understanding.
+- **DistilBERT:** A compressed, faster variant of BERT offering good accuracy with less computational requirement.
 
-⸻
+Both models are implemented using the Hugging Face Transformers library and trained on systematically labeled financial headlines.
 
-📊 Dataset
-	•	Size: ~10,000 financial news headlines
-	•	Split: 70% Train | 15% Validation | 15% Test
-	•	Labels:
-	•	0 → Negative
-	•	1 → Neutral
-	•	2 → Positive
+---
 
-Exploratory Data Analysis (EDA):
-	•	Label distribution via countplot and pie chart
-	•	Word clouds for each sentiment class
-	•	Sentence length distribution
-	•	Visualization of sample text vs. sentiment label
+## Dataset
 
-⸻
+- **Size:** ~10,000 financial news headlines
+- **Split:** 
+  - 70% Training
+  - 15% Validation
+  - 15% Test
+- **Labels:** 
+  - 0: Negative
+  - 1: Neutral
+  - 2: Positive
 
-⚙️ Methodology
+**Exploratory Data Analysis (EDA):**
+- Counting label frequency (bar charts, pie charts)
+- Generating word clouds for each class
+- Reviewing sentence length patterns
+- Visualizing sample headlines by sentiment
 
-🧩 1. Preprocessing
-	•	Lowercasing
-	•	Removal of special characters & extra spaces
-	•	Uniform label encoding
-	•	Tokenization with AutoTokenizer
+---
 
-🔍 2. Model Fine-Tuning
+## Methodology
 
-BERT (bert-base-uncased)
-	•	Model: BertForSequenceClassification
-	•	Batch size: 4 (train), 8 (eval)
-	•	Epochs: 1
-	•	Optimizer: AdamW
+### 1. Data Preprocessing
+- Convert text to lowercase.
+- Remove special characters and unnecessary spaces.
+- Encode sentiment labels to numerical values.
+- Tokenize text using transformer-compatible tokenizers.
 
-DistilBERT
-	•	Model: DistilBertForSequenceClassification
-	•	Batch size: 8 (train), 16 (eval)
-	•	Epochs: 3
-	•	Optimizer: AdamW
+### 2. Model Training & Fine-Tuning
 
-Both trained using the Hugging Face Trainer API with a custom PyTorch Dataset class.
+#### BERT
+- Model: `BertForSequenceClassification`
+- Training: Batch size 4, 1 epoch
+- Evaluation: Batch size 8
+- Optimizer: AdamW
 
+#### DistilBERT
+- Model: `DistilBertForSequenceClassification`
+- Training: Batch size 8, 3 epochs
+- Evaluation: Batch size 16
+- Optimizer: AdamW
 
-📈 Results & Analysis
-Model
-Training Time
-Accuracy
-Parameters
-BERT
-~40 min
-96.0%
-110M
-DistilBERT
-~15 min
-96.0%
-66M
+Training is performed via Hugging Face `Trainer` API, using custom PyTorch datasets to format headlines for model input.
 
+---
 
+## Results & Analysis
 
-Key Insights:
-	•	BERT offers stronger contextual understanding and slightly better precision.
-	•	DistilBERT achieves comparable accuracy with 2.5× faster training and less GPU memory usage.
-	•	Both models effectively capture nuanced financial tone.
+| Model      | Training Time | Accuracy | Parameters |
+|------------|:-------------:|:--------:|:----------:|
+| BERT       | ~40 min       | 96.0%    | 110M       |
+| DistilBERT | ~15 min       | 96.0%    | 66M        |
 
-Confusion Matrix Analysis:
-	•	BERT performs better at separating neutral vs. positive sentiment.
-	•	DistilBERT shows minor confusion between neutral and negative headlines.
+**Model Insights:**
+- BERT provides more thorough contextual analysis and excels in distinguishing subtle sentiment differences, but is slower and requires more resources.
+- DistilBERT achieves the same accuracy as BERT, trains 2.5× faster, and uses less memory, making it a practical choice for real-time applications.
 
+**Confusion Matrix Insights:**
+- BERT is better at separating neutral from positive sentiment.
+- DistilBERT occasionally confuses neutral with negative headlines.
 
-🧾 Implementation Notes
-	•	Frameworks: PyTorch, Hugging Face Transformers
-	•	Visualization: Matplotlib, Seaborn, WordCloud
-	•	GPU Tested: NVIDIA T4 / A100
-	•	Modular and documented notebook with debugging checkpoints
+---
 
-⸻
+## Skills Exhibited
 
-🧩 Key Takeaways
-	•	BERT: Best for high-stakes financial sentiment tasks where accuracy matters most.
-	•	DistilBERT: Excellent balance of speed and performance — ideal for real-time or resource-limited systems.
-	•	Demonstrates how transformer models outperform classical NLP in domain-specific sentiment tasks.
-  
-🏁 Conclusion
+- **Data Analysis & Visualization:** Mastered EDA using countplots, pie charts, word clouds, and sentence statistics.
+- **NLP Preprocessing:** Skilled in cleaning and preparing sophisticated financial text data for deep learning models.
+- **Model Fine-Tuning:** Proficient in training, evaluating, and comparing transformer-based models using PyTorch and Hugging Face.
+- **Performance Evaluation:** Experienced in using accuracy, confusion matrices, and efficiency measurements to assess model effectiveness.
+- **Deep Learning Deployment:** Familiar with deploying models for GPU acceleration (NVIDIA T4 / A100), optimizing resource usage for production scenarios.
+- **Report Writing & Documentation:** Produced clear, detailed documentation and modular notebook structures with debugging checkpoints.
 
-Both BERT and DistilBERT proved highly effective for financial sentiment analysis, achieving 96% accuracy.
-While BERT excels in contextual depth, DistilBERT is a practical alternative for faster, resource-efficient deployment.
+---
 
-This project demonstrates how transformer-based NLP models can empower intelligent financial decision systems through text sentiment analysis.
+## Key Takeaways
+
+- **BERT:** Best suited for tasks requiring deep contextual sentiment analysis, such as high-value trade or risk assessment.
+- **DistilBERT:** Ideal for applications where speed and efficiency are prioritized, such as real-time analytics or systems with limited hardware.
+- **Advanced Transformers:** Outperform traditional NLP techniques in handling the specialized language of financial headlines.
+
+---
+
+## Conclusion
+
+Both BERT and DistilBERT offer high accuracy for financial sentiment analysis, with subtle trade-offs between speed and contextual performance. This project demonstrates the power of transformer-based NLP models to improve financial decision-making tools by accurately interpreting the sentiment of market-moving headlines.
